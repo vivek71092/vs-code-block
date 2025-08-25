@@ -60,9 +60,6 @@ class VS_Code_Block {
 	 * Initialize hooks.
 	 */
 	private function init_hooks() {
-		// Load plugin textdomain.
-		add_action( 'init', array( $this, 'load_textdomain' ) );
-
 		// Register block.
 		add_action( 'init', array( $this, 'register_block' ) );
 
@@ -87,13 +84,6 @@ class VS_Code_Block {
 
 		// Widget support.
 		add_action( 'widgets_init', array( $this, 'register_widget' ) );
-	}
-
-	/**
-	 * Load plugin textdomain.
-	 */
-	public function load_textdomain() {
-		load_plugin_textdomain( 'vs-code-block', false, dirname( VSCB_PLUGIN_BASENAME ) . '/languages' );
 	}
 
 	/**
@@ -558,12 +548,65 @@ class VS_Code_Block {
 	 * Register settings.
 	 */
 	public function register_settings() {
-		register_setting( 'vscb_settings', 'vscb_default_language' );
-		register_setting( 'vscb_settings', 'vscb_show_line_numbers' );
-		register_setting( 'vscb_settings', 'vscb_show_copy_button' );
-		register_setting( 'vscb_settings', 'vscb_show_language_label' );
-		register_setting( 'vscb_settings', 'vscb_custom_css' );
-		register_setting( 'vscb_settings', 'vscb_lazy_load' );
+		register_setting( 
+			'vscb_settings', 
+			'vscb_default_language',
+			array(
+				'type' => 'string',
+				'sanitize_callback' => 'sanitize_text_field',
+				'default' => 'javascript',
+			)
+		);
+		
+		register_setting( 
+			'vscb_settings', 
+			'vscb_show_line_numbers',
+			array(
+				'type' => 'boolean',
+				'sanitize_callback' => 'rest_sanitize_boolean',
+				'default' => true,
+			)
+		);
+		
+		register_setting( 
+			'vscb_settings', 
+			'vscb_show_copy_button',
+			array(
+				'type' => 'boolean',
+				'sanitize_callback' => 'rest_sanitize_boolean',
+				'default' => true,
+			)
+		);
+		
+		register_setting( 
+			'vscb_settings', 
+			'vscb_show_language_label',
+			array(
+				'type' => 'boolean',
+				'sanitize_callback' => 'rest_sanitize_boolean',
+				'default' => true,
+			)
+		);
+		
+		register_setting( 
+			'vscb_settings', 
+			'vscb_custom_css',
+			array(
+				'type' => 'string',
+				'sanitize_callback' => 'wp_strip_all_tags',
+				'default' => '',
+			)
+		);
+		
+		register_setting( 
+			'vscb_settings', 
+			'vscb_lazy_load',
+			array(
+				'type' => 'boolean',
+				'sanitize_callback' => 'rest_sanitize_boolean',
+				'default' => true,
+			)
+		);
 	}
 
 	/**
