@@ -1,0 +1,393 @@
+/**
+ * VS Code Block - Block Editor Styles
+ * Styles for the Gutenberg block editor interface
+ */
+
+/* Block wrapper in editor */
+.wp-block-vs-code-block-code {
+    margin: 0;
+    padding: 0;
+}
+
+/* Editor preview container */
+.wp-block-vs-code-block-code .editor-preview {
+    margin: 0;
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+}
+
+/* VS Code container in editor */
+.wp-block-vs-code-block-code .wp-vscode-container {
+    --vscode-bg: #212121;
+    --vscode-text: #ffffff;
+    --vscode-sidebar: #2d2d2d;
+    --vscode-tab: #3c3c3c;
+    --vscode-border: #555;
+    --keyword-purple: #c792ea;
+    --string-orange: #f78c6c;
+    --comment-green: #00ff00;
+    --accent-blue: #5599ff;
+    --success-green: #00ff00;
+    --radius: 8px;
+    --padding: 20px;
+    --font-main: 16px;
+    --font-small: 14px;
+    
+    background-color: var(--vscode-bg);
+    color: var(--vscode-text);
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+}
+
+.wp-block-vs-code-block-code .wp-vscode-container * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container structure */
+.wp-block-vs-code-block-code .vscode-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+/* Title Bar */
+.wp-block-vs-code-block-code .title-bar {
+    height: 35px;
+    background: var(--vscode-sidebar);
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    border-bottom: 1px solid var(--vscode-border);
+}
+
+.wp-block-vs-code-block-code .traffic-lights {
+    display: flex;
+    gap: 8px;
+    margin-right: 15px;
+}
+
+.wp-block-vs-code-block-code .traffic-light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 0.5px solid rgba(0,0,0,0.2);
+}
+
+.wp-block-vs-code-block-code .close { 
+    background-color: #ff5f57; 
+}
+
+.wp-block-vs-code-block-code .minimize { 
+    background-color: #ffbd2e; 
+}
+
+.wp-block-vs-code-block-code .maximize { 
+    background-color: #28ca42; 
+}
+
+.wp-block-vs-code-block-code .title-text {
+    color: #cccccc;
+    font-size: var(--font-small);
+    flex: 1;
+    text-align: center;
+    margin-right: 80px;
+    user-select: none;
+}
+
+/* Tab Bar */
+.wp-block-vs-code-block-code .tab-bar {
+    background: var(--vscode-tab);
+    border-bottom: 1px solid var(--vscode-border);
+    display: flex;
+    align-items: center;
+    position: relative;
+    min-height: 40px;
+}
+
+.wp-block-vs-code-block-code .tab {
+    background: var(--vscode-bg);
+    border-right: 1px solid var(--vscode-border);
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--font-small);
+}
+
+.wp-block-vs-code-block-code .file-icon {
+    width: 16px;
+    height: 16px;
+    background: var(--accent-blue);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--vscode-bg);
+}
+
+.wp-block-vs-code-block-code .lang-indicator {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--vscode-sidebar);
+    color: var(--accent-blue);
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+/* Code Content Area */
+.wp-block-vs-code-block-code .code-content {
+    padding: var(--padding);
+    background: var(--vscode-bg);
+    position: relative;
+    min-height: 200px;
+}
+
+/* Copy Button (disabled in editor) */
+.wp-block-vs-code-block-code .copy-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: var(--vscode-sidebar);
+    border: 1px solid var(--vscode-border);
+    color: var(--vscode-text);
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: var(--font-small);
+    cursor: not-allowed;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 10;
+    opacity: 0.5;
+}
+
+/* Code Editor Textarea */
+.wp-block-vs-code-block-code .code-editor-textarea {
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace !important;
+    background: transparent !important;
+    color: #ffffff !important;
+    border: none !important;
+    outline: none !important;
+    resize: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    min-height: 150px !important;
+    line-height: 1.6 !important;
+    font-size: 16px !important;
+    white-space: pre !important;
+    overflow-wrap: normal !important;
+    overflow-x: auto !important;
+}
+
+/* With line numbers */
+.wp-block-vs-code-block-code .line-numbers-wrapper + .code-editor-textarea {
+    padding-left: 60px !important;
+}
+
+/* Line Numbers in Editor */
+.wp-block-vs-code-block-code .line-numbers-wrapper {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 50px;
+    text-align: right;
+    padding-right: 15px;
+    user-select: none;
+    color: #858585;
+    font-size: 16px;
+    line-height: 1.6;
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    pointer-events: none;
+}
+
+.wp-block-vs-code-block-code .line-number {
+    display: block;
+    color: #858585;
+    height: 1.6em;
+}
+
+/* Block toolbar adjustments */
+.wp-block-vs-code-block-code .block-editor-block-toolbar {
+    margin-bottom: 8px;
+}
+
+/* Inspector controls styling */
+.components-panel__body .components-base-control {
+    margin-bottom: 16px;
+}
+
+.components-panel__body .components-base-control:last-child {
+    margin-bottom: 0;
+}
+
+/* Select control in sidebar */
+.components-select-control__input {
+    max-width: 100%;
+}
+
+/* Help text styling */
+.components-base-control__help {
+    font-size: 12px;
+    font-style: normal;
+    color: #757575;
+    margin-top: 4px;
+}
+
+/* Placeholder text */
+.wp-block-vs-code-block-code .code-editor-textarea:empty:before {
+    content: attr(placeholder);
+    color: #858585;
+    pointer-events: none;
+    position: absolute;
+}
+
+/* Focus styles */
+.wp-block-vs-code-block-code.is-selected .wp-vscode-container {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 0 2px var(--accent-blue);
+}
+
+/* Inline code format */
+.vscb-inline-code {
+    background: #2d2d2d;
+    color: #ce9178;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    font-size: 0.9em;
+}
+
+/* Rich text toolbar button */
+.components-toolbar-button[aria-label="Inline Code"] {
+    font-family: monospace;
+}
+
+/* Block inserter preview */
+.block-editor-block-types-list__item-title {
+    font-size: 12px;
+}
+
+.wp-block-vs-code-block-code .block-editor-block-types-list__item-description {
+    font-size: 11px;
+}
+
+/* Example preview in inserter */
+.block-editor-inserter__preview .wp-block-vs-code-block-code {
+    transform: scale(0.9);
+    margin: 10px;
+}
+
+/* Responsive adjustments in editor */
+@media (max-width: 782px) {
+    .wp-block-vs-code-block-code .code-editor-textarea {
+        font-size: 14px !important;
+    }
+    
+    .wp-block-vs-code-block-code .line-numbers-wrapper {
+        font-size: 14px;
+    }
+    
+    .wp-block-vs-code-block-code .title-text {
+        display: none;
+    }
+}
+
+/* Dark mode support for editor UI */
+.is-dark-theme .wp-block-vs-code-block-code .wp-vscode-container {
+    border: 1px solid var(--vscode-border);
+}
+
+/* Reusable blocks styling */
+.is-reusable .wp-block-vs-code-block-code {
+    border: 2px dashed #ddd;
+    padding: 10px;
+}
+
+/* Block variations */
+.wp-block-vs-code-block-code.is-style-compact .code-content {
+    padding: 10px;
+}
+
+.wp-block-vs-code-block-code.is-style-compact .code-editor-textarea {
+    min-height: 80px !important;
+}
+
+/* Animation for block insertion */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.wp-block-vs-code-block-code.is-inserted {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Error state */
+.wp-block-vs-code-block-code.has-error {
+    border: 2px solid #cc1818;
+    padding: 20px;
+    background: #fff5f5;
+}
+
+.wp-block-vs-code-block-code.has-error .wp-vscode-container {
+    opacity: 0.5;
+}
+
+/* Loading state */
+.wp-block-vs-code-block-code.is-loading .code-content {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wp-block-vs-code-block-code.is-loading .code-content::after {
+    content: '';
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--vscode-border);
+    border-top-color: var(--accent-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Nested blocks prevention */
+.wp-block-vs-code-block-code .wp-block-vs-code-block-code {
+    display: none;
+}
+
+/* Print preview in editor */
+@media print {
+    .wp-block-vs-code-block-code .copy-button {
+        display: none !important;
+    }
+    
+    .wp-block-vs-code-block-code .wp-vscode-container {
+        box-shadow: none;
+        break-inside: avoid;
+    }
+}

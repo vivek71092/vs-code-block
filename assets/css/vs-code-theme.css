@@ -1,0 +1,563 @@
+/**
+ * VS Code Block - Theme Styles
+ * Matches the VS Code dark theme appearance
+ */
+
+.wp-vscode-container {
+    --vscode-bg: #212121;
+    --vscode-text: #ffffff;
+    --vscode-sidebar: #2d2d2d;
+    --vscode-tab: #3c3c3c;
+    --vscode-border: #555;
+    --keyword-purple: #c792ea;
+    --string-orange: #f78c6c;
+    --comment-green: #00ff00;
+    --accent-blue: #5599ff;
+    --success-green: #00ff00;
+    --radius: 8px;
+    --padding: 20px;
+    --font-main: 16px;
+    --font-small: 14px;
+    
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+    background-color: var(--vscode-bg);
+    color: var(--vscode-text);
+    margin: 2em 0;
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.wp-vscode-container * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wp-vscode-container .vscode-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+/* Title Bar */
+.wp-vscode-container .title-bar {
+    height: 35px;
+    background: var(--vscode-sidebar);
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    border-bottom: 1px solid var(--vscode-border);
+    position: relative;
+}
+
+.wp-vscode-container .traffic-lights {
+    display: flex;
+    gap: 8px;
+    margin-right: 15px;
+}
+
+.wp-vscode-container .traffic-light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 0.5px solid rgba(0,0,0,0.2);
+    cursor: default;
+    transition: opacity 0.2s ease;
+}
+
+.wp-vscode-container:hover .traffic-light {
+    opacity: 1;
+}
+
+.wp-vscode-container .traffic-light {
+    opacity: 0.6;
+}
+
+.wp-vscode-container .close { 
+    background-color: #ff5f57; 
+}
+
+.wp-vscode-container .minimize { 
+    background-color: #ffbd2e; 
+}
+
+.wp-vscode-container .maximize { 
+    background-color: #28ca42; 
+}
+
+.wp-vscode-container .title-text {
+    color: #cccccc;
+    font-size: var(--font-small);
+    flex: 1;
+    text-align: center;
+    margin-right: 80px;
+    user-select: none;
+}
+
+/* Tab Bar */
+.wp-vscode-container .tab-bar {
+    background: var(--vscode-tab);
+    border-bottom: 1px solid var(--vscode-border);
+    display: flex;
+    align-items: center;
+    position: relative;
+    min-height: 40px;
+}
+
+.wp-vscode-container .tab {
+    background: var(--vscode-bg);
+    border-right: 1px solid var(--vscode-border);
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--font-small);
+    user-select: none;
+}
+
+.wp-vscode-container .file-icon {
+    width: 16px;
+    height: 16px;
+    background: var(--accent-blue);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--vscode-bg);
+}
+
+.wp-vscode-container .lang-indicator {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--vscode-sidebar);
+    color: var(--accent-blue);
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+/* Code Content Area */
+.wp-vscode-container .code-content {
+    padding: var(--padding);
+    font-size: var(--font-main);
+    line-height: 1.6;
+    background: var(--vscode-bg);
+    position: relative;
+    min-height: 100px;
+    max-height: 600px;
+    overflow: auto;
+}
+
+/* Custom Scrollbar */
+.wp-vscode-container .code-content::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+.wp-vscode-container .code-content::-webkit-scrollbar-track {
+    background: var(--vscode-sidebar);
+}
+
+.wp-vscode-container .code-content::-webkit-scrollbar-thumb {
+    background: var(--vscode-border);
+    border-radius: 6px;
+}
+
+.wp-vscode-container .code-content::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+/* Copy Button */
+.wp-vscode-container .copy-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: var(--vscode-sidebar);
+    border: 1px solid var(--vscode-border);
+    color: var(--vscode-text);
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: var(--font-small);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s ease;
+    z-index: 10;
+    font-family: inherit;
+}
+
+.wp-vscode-container .copy-button:hover {
+    background: var(--vscode-border);
+    border-color: var(--accent-blue);
+}
+
+.wp-vscode-container .copy-button.copied {
+    background: var(--success-green);
+    color: #000;
+    border-color: var(--success-green);
+}
+
+.wp-vscode-container .copy-button .copy-icon {
+    font-size: 14px;
+}
+
+/* Collapse Button */
+.wp-vscode-container .collapse-button {
+    position: absolute;
+    top: 10px;
+    right: 80px;
+    background: var(--vscode-sidebar);
+    border: 1px solid var(--vscode-border);
+    color: var(--vscode-text);
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: var(--font-small);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.wp-vscode-container .collapse-button:hover {
+    background: var(--vscode-border);
+}
+
+.wp-vscode-container .code-content.collapsed {
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.wp-vscode-container .code-content.collapsed + .collapse-button .collapse-icon {
+    transform: rotate(-90deg);
+}
+
+/* Code Styling */
+.wp-vscode-container pre {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    overflow: visible;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.wp-vscode-container code {
+    font-family: inherit;
+    font-size: inherit;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    color: var(--vscode-text);
+    display: block;
+}
+
+/* Line Numbers */
+.wp-vscode-container .line-numbers-wrapper {
+    position: absolute;
+    left: 0;
+    top: var(--padding);
+    width: 50px;
+    text-align: right;
+    padding-right: 15px;
+    user-select: none;
+    color: #858585;
+    font-size: var(--font-main);
+    line-height: 1.6;
+    pointer-events: none;
+}
+
+.wp-vscode-container .line-number {
+    display: block;
+    color: #858585;
+}
+
+.wp-vscode-container.has-line-numbers .code-pre {
+    margin-left: 50px;
+}
+
+/* Line Highlighting */
+.wp-vscode-container .line-highlight {
+    background: rgba(255, 255, 255, 0.1);
+    display: inline-block;
+    width: 100%;
+    margin-left: -50px;
+    padding-left: 50px;
+}
+
+/* Prism.js Token Colors - VS Code Dark Theme */
+.wp-vscode-container .token.comment,
+.wp-vscode-container .token.prolog,
+.wp-vscode-container .token.doctype,
+.wp-vscode-container .token.cdata {
+    color: #6a9955;
+}
+
+.wp-vscode-container .token.punctuation {
+    color: #d4d4d4;
+}
+
+.wp-vscode-container .token.property,
+.wp-vscode-container .token.tag,
+.wp-vscode-container .token.boolean,
+.wp-vscode-container .token.number,
+.wp-vscode-container .token.constant,
+.wp-vscode-container .token.symbol,
+.wp-vscode-container .token.deleted {
+    color: #b5cea8;
+}
+
+.wp-vscode-container .token.selector,
+.wp-vscode-container .token.attr-name,
+.wp-vscode-container .token.string,
+.wp-vscode-container .token.char,
+.wp-vscode-container .token.builtin,
+.wp-vscode-container .token.inserted {
+    color: #ce9178;
+}
+
+.wp-vscode-container .token.operator,
+.wp-vscode-container .token.entity,
+.wp-vscode-container .token.url,
+.wp-vscode-container .language-css .token.string,
+.wp-vscode-container .style .token.string {
+    color: #d4d4d4;
+}
+
+.wp-vscode-container .token.atrule,
+.wp-vscode-container .token.attr-value,
+.wp-vscode-container .token.keyword {
+    color: #c586c0;
+}
+
+.wp-vscode-container .token.function,
+.wp-vscode-container .token.class-name {
+    color: #dcdcaa;
+}
+
+.wp-vscode-container .token.regex,
+.wp-vscode-container .token.important,
+.wp-vscode-container .token.variable {
+    color: #9cdcfe;
+}
+
+.wp-vscode-container .token.important,
+.wp-vscode-container .token.bold {
+    font-weight: bold;
+}
+
+.wp-vscode-container .token.italic {
+    font-style: italic;
+}
+
+.wp-vscode-container .token.entity {
+    cursor: help;
+}
+
+/* Inline Code */
+.wp-vscode-container.inline {
+    display: inline-block;
+    margin: 0 2px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.wp-vscode-container.inline .vscode-container,
+.wp-vscode-container.inline .title-bar,
+.wp-vscode-container.inline .tab-bar,
+.wp-vscode-container.inline .copy-button,
+.wp-vscode-container.inline .collapse-button {
+    display: none;
+}
+
+.wp-vscode-container.inline .code-content {
+    padding: 2px 6px;
+    min-height: auto;
+    max-height: none;
+}
+
+/* Diff Highlighting */
+.wp-vscode-container .token.inserted {
+    background-color: rgba(16, 185, 129, 0.2);
+}
+
+.wp-vscode-container .token.deleted {
+    background-color: rgba(239, 68, 68, 0.2);
+}
+
+/* Command Line */
+.wp-vscode-container .command-line-prompt {
+    display: block;
+    float: left;
+    margin-right: 1em;
+    color: #858585;
+    user-select: none;
+}
+
+.wp-vscode-container .command-line-prompt > span:before {
+    content: '$ ';
+}
+
+/* Full Screen Mode */
+.wp-vscode-container.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    border-radius: 0;
+    z-index: 999999;
+}
+
+.wp-vscode-container.fullscreen .code-content {
+    max-height: calc(100vh - 75px);
+}
+
+.wp-vscode-container .fullscreen-button {
+    position: absolute;
+    top: 10px;
+    right: 150px;
+    background: var(--vscode-sidebar);
+    border: 1px solid var(--vscode-border);
+    color: var(--vscode-text);
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: var(--font-small);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.wp-vscode-container .fullscreen-button:hover {
+    background: var(--vscode-border);
+}
+
+/* Search within code */
+.wp-vscode-container .search-box {
+    position: absolute;
+    top: 10px;
+    right: 220px;
+    background: var(--vscode-sidebar);
+    border: 1px solid var(--vscode-border);
+    border-radius: 4px;
+    padding: 4px 8px;
+    display: none;
+    align-items: center;
+    gap: 5px;
+    z-index: 10;
+}
+
+.wp-vscode-container .search-box.active {
+    display: flex;
+}
+
+.wp-vscode-container .search-input {
+    background: var(--vscode-bg);
+    border: 1px solid var(--vscode-border);
+    color: var(--vscode-text);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: var(--font-small);
+    font-family: inherit;
+    width: 150px;
+}
+
+.wp-vscode-container .search-highlight {
+    background-color: rgba(255, 235, 59, 0.5);
+}
+
+.wp-vscode-container .search-highlight.current {
+    background-color: rgba(255, 152, 0, 0.7);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .wp-vscode-container {
+        margin: 1em 0;
+        font-size: 14px;
+    }
+    
+    .wp-vscode-container .title-text {
+        display: none;
+    }
+    
+    .wp-vscode-container .lang-indicator {
+        display: none;
+    }
+    
+    .wp-vscode-container .code-content {
+        padding: 15px;
+    }
+    
+    .wp-vscode-container .fullscreen-button,
+    .wp-vscode-container .search-box {
+        display: none;
+    }
+}
+
+/* Loading State */
+.wp-vscode-container.loading .code-content {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wp-vscode-container.loading .code-content::after {
+    content: '';
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--vscode-border);
+    border-top-color: var(--accent-blue);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Accessibility */
+.wp-vscode-container .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Print Styles */
+@media print {
+    .wp-vscode-container .copy-button,
+    .wp-vscode-container .collapse-button,
+    .wp-vscode-container .fullscreen-button,
+    .wp-vscode-container .search-box {
+        display: none !important;
+    }
+    
+    .wp-vscode-container {
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+    
+    .wp-vscode-container .code-content {
+        max-height: none;
+    }
+}
